@@ -23,6 +23,12 @@ const routes = [
     path: '/custom',
     name: 'custom',
     component: () => import('../views/Customer.vue')
+  },
+
+  {
+    path: '/add_custom',
+    name: 'add_custom',
+    component: () => import('../views/Add_customer.vue')
   }
   
 ]
