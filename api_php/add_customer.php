@@ -17,7 +17,7 @@ try {
             $stmt->bindParam(':username', $data['username']);
             $hashedPassword = password_hash($data['password'], PASSWORD_BCRYPT);
             $stmt->bindParam(':password', $hashedPassword);
-
+            
             if ($stmt->execute()) {
                 echo json_encode(["success" => true, "message" => "ลงทะเบียนสำเร็จ"]);
             } else {

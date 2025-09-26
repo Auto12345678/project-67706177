@@ -43,6 +43,13 @@ const routes = [
     component: () => import('../views/Add_product.vue')
   },
 
+  {
+    path: '/student',
+    name: 'student',
+    component: () => import('../views/Student.vue')
+  },
+
+
 ]
 
 const router = createRouter({
