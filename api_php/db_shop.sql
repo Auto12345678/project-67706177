@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2025 at 06:03 PM
+-- Generation Time: Oct 03, 2025 at 08:46 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -41,8 +41,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `username`, `password`) VALUES
-(1, 'Somchai', 'Wongdee', '0812345678', 'somchaiw', 'password123'),
-(2, 'Anong', 'Srisuk', '0898765432', 'anongs', 'securepass456');
+(2, 'Anong', 'Srisuk', '0898765432', 'anongs', 'securepass456'),
+(4, '2', '3', '2', '5', '$2y$10$W7Wsje8/i4TlZ0WqiNlkFuPO7rq8Znarlw57mE8PFL8gzymumAV/C');
 
 -- --------------------------------------------------------
 
@@ -185,7 +185,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `orderdetails`
