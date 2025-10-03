@@ -15,15 +15,22 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/custom">Customer</a>
-        </li>
-
-        <li class="nav-item">
           <a class="nav-link" href="/student">Student</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="/product">Product</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Customer
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/custom">Customer</a></li>
+            <li><a class="dropdown-item" href="edit">CustomerEdit</a></li>
+            
+          </ul>
         </li>
 
         <li class="nav-item dropdown">
@@ -37,6 +44,7 @@
             <li><a class="dropdown-item" href="/add_custom">Register</a></li>
           </ul>
         </li>
+
          <li class="nav-item">
           <a class="nav-link" href="/about">About</a>
         </li>

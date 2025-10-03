@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2025 at 08:33 PM
+-- Generation Time: Oct 03, 2025 at 06:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -42,8 +42,7 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `username`, `password`) VALUES
 (1, 'Somchai', 'Wongdee', '0812345678', 'somchaiw', 'password123'),
-(2, 'Anong', 'Srisuk', '0898765432', 'anongs', 'securepass456'),
-(3, '1', '1', '1', '1', '$2y$10$ck1Zo23BYvD1ogEW9sTMbutdggZX4rlQ3AsaZLCznPIYlgIGzx5v6');
+(2, 'Anong', 'Srisuk', '0898765432', 'anongs', 'securepass456');
 
 -- --------------------------------------------------------
 
@@ -114,6 +113,30 @@ INSERT INTO `products` (`product_id`, `product_name`, `description`, `price`, `i
 (3, 'รองเท้าผ้าใบ', 'รองเท้าผ้าใบสีขาว ใส่ได้ทุกโอกาส', '1299.00', 'sneakers.jpg', 20, '2025-09-19 17:29:36'),
 (4, 'ลิงโอ้ต', 'ลิงเก', '1999999.00', '1758306121_053.jpg', 1, '2025-09-19 18:22:01');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `student_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`student_id`, `first_name`, `last_name`, `email`, `phone`, `created_at`) VALUES
+(1, 'Somchai', 'Sukjai', 'somchai@example.com', '0811111111', '2025-10-03 16:02:51'),
+(2, 'Suda', 'Jaidee', 'suda@example.com', '0822222222', '2025-10-03 16:02:51'),
+(3, 'Anan', 'Thongdee', 'anan@example.com', '0833333333', '2025-10-03 16:02:51');
+
 --
 -- Indexes for dumped tables
 --
@@ -149,6 +172,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`student_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -181,6 +210,12 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
