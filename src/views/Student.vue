@@ -133,7 +133,7 @@ export default {
 // เพิ่มฟังก์ชั่นการแก้ไขข้อมูล ***
     const updateStudent = async () => {
       try {
-        const response = await fetch("http://localhost/project-67706177/api_php/api_Edit_customer.php", {
+        const response = await fetch("http://localhost/project-67706177/api_php/api_Edit_student.php", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(editStudent.value)
@@ -160,7 +160,7 @@ export default {
       if (!confirm("คุณต้องการลบข้อมูลนี้ใช่หรือไม่?")) return;
 
       try {
-        const response = await fetch("http://localhost/project-67706177/api_php/api_Edit_customer.php", {
+        const response = await fetch("http://localhost/project-67706177/api_php/api_Edit_student.php", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ student_id: id })
