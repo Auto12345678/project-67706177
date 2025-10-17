@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2025 at 08:46 PM
+-- Generation Time: Oct 17, 2025 at 08:53 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -43,6 +43,31 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `username`, `password`) VALUES
 (2, 'Anong', 'Srisuk', '0898765432', 'anongs', 'securepass456'),
 (4, '2', '3', '2', '5', '$2y$10$W7Wsje8/i4TlZ0WqiNlkFuPO7rq8Znarlw57mE8PFL8gzymumAV/C');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employees`
+--
+
+CREATE TABLE `employees` (
+  `employee_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `profile_picture` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`employee_id`, `first_name`, `last_name`, `username`, `password`, `profile_picture`) VALUES
+(3, 'Michael', 'Johnson', 'mikejohnson', 'mypassword789', 'michael_johnson.jpg'),
+(4, 'EmilyMonkey', 'Davis1112', 'emilydavis22', 'emily123433', '1760726888_Macaca_nigra_self-portrait_large.jpg'),
+(5, 'Autoๅๅๅ', 'Auto', 'Auto', '1234', '1760726853_10.webp'),
+(6, '112', '22', '11', '22', '1760726746_images.jfif');
 
 -- --------------------------------------------------------
 
@@ -111,7 +136,9 @@ INSERT INTO `products` (`product_id`, `product_name`, `description`, `price`, `i
 (1, 'เสื้อยืดคอกลม', 'เสื้อยืดผ้าฝ้าย 100% สวมใส่สบาย', '199.00', 'tshirt.jpg', 50, '2025-09-19 17:29:36'),
 (2, 'กางเกงยีนส์', 'กางเกงยีนส์ทรงกระบอก สีฟ้าอ่อน', '799.00', 'jeans.jpg', 30, '2025-09-19 17:29:36'),
 (3, 'รองเท้าผ้าใบ', 'รองเท้าผ้าใบสีขาว ใส่ได้ทุกโอกาส', '1299.00', 'sneakers.jpg', 20, '2025-09-19 17:29:36'),
-(4, 'ลิงโอ้ต', 'ลิงเก', '1999999.00', '1758306121_053.jpg', 1, '2025-09-19 18:22:01');
+(5, 'เสื้อยืดคอกลม', 'เสื้อยืดผ้าฝ้าย 100% สวมใส่สบาย', '199.00', 'tshirt.jpg', 50, '2025-10-17 16:49:42'),
+(6, 'กางเกงยีนส์', 'กางเกงยีนส์ทรงกระบอก สีฟ้าอ่อน', '799.00', 'jeans.jpg', 30, '2025-10-17 16:49:42'),
+(7, 'รองเท้าผ้าใบ', 'รองเท้าผ้าใบสีขาว ใส่ได้ทุกโอกาส', '1299.00', 'sneakers.jpg', 20, '2025-10-17 16:49:42');
 
 -- --------------------------------------------------------
 
@@ -133,7 +160,6 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `first_name`, `last_name`, `email`, `phone`, `created_at`) VALUES
-(1, 'Somchai', 'Sukjai', 'somchai@example.com', '0811111111', '2025-10-03 16:02:51'),
 (2, 'Suda', 'Jaidee', 'suda@example.com', '0822222222', '2025-10-03 16:02:51'),
 (3, 'Anan', 'Thongdee', 'anan@example.com', '0833333333', '2025-10-03 16:02:51');
 
@@ -146,6 +172,13 @@ INSERT INTO `students` (`student_id`, `first_name`, `last_name`, `email`, `phone
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`customer_id`);
+
+--
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`employee_id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `orderdetails`
@@ -188,6 +221,12 @@ ALTER TABLE `customers`
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
@@ -209,7 +248,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `students`

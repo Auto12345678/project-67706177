@@ -2,12 +2,17 @@
   <div class="container my-5">
     <h2 class="text-center mb-4">รายการสินค้า</h2>
     <div class="row">
-      <div class="col-md-4" v-for="product in products" :key="product.id">
+      <div class="col-md-4" v-for="product in products" :key="product_id">
+
+        <div class="card shadow-sm mb-4"> 
+          <img :src="'http://localhost/project-67706177/api_php/uploads/' + product.image" width="70%" height="300" class="card-img-top" :alt="product.name"></div>
+
         <div class="card shadow-sm mb-4">
           <img :src="product.image" class="card-img-top" :alt="product.name">
           <div class="card-body text-center">
-            <h5 class="card-title">{{ product.name }}</h5>
+            <h5 class="card-title">{{ product.product_name }}</h5>
             <p class="card-text">{{ product.price }} บาท</p>
+            <p class="card-text">{{ product.stock }} บาท</p>
             <button class="btn btn-primary">รายละเอียด</button>
           </div>
         </div>
@@ -18,19 +23,53 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
+
 export default {
-  name: "ShowProduct",
-  data() {
+  name: "ProductList",
+  setup() {
+    const products = ref([]);
+    const loading = ref(true);
+    const error = ref(null);
+
+    // ฟังก์ชันดึงข้อมูลจาก API ด้วย GET
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("http://localhost/project-67706177/api_php/show_product.php", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("ไม่สามารถดึงข้อมูลได้");
+        }
+
+        const result = await response.json();
+        if (result.success) {
+          products.value = result.data;
+        } else {
+          error.value = result.message;
+        }
+
+      } catch (err) {
+        error.value = err.message;
+      } finally {
+        loading.value = false;
+      }
+    };
+
+    onMounted(() => {
+      fetchProducts();
+    });
+
     return {
-      products: [
-        { id: 1, name: "เตาไฟฟ้า", price: 1200, image: "https://picsum.photos/400/200?4" },
-        { id: 2, name: "หม้อชาบู", price: 800, image: "https://picsum.photos/400/200?5" },
-        { id: 3, name: "ชุดช้อนส้อม", price: 250, image: "https://picsum.photos/400/200?6" },
-        { id: 4, name: "ชุดปลูกข้าว", price: 10, image: "https://picsum.photos/400/200?7" },
-        { id: 5, name: "ส้มตำ", price: 2000, image: "https://picsum.photos/400/200?8" },
-        { id: 6, name: "ส้นตีน", price: 0, image: "https://picsum.photos/400/200?9" },
-      ]
-    }
+      products,
+      loading,
+      error
+    };
   }
-}
+};
 </script>
+
